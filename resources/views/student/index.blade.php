@@ -103,7 +103,7 @@
 							<td></td>
 							<td><img width="80" src="" alt=""></td>
 							<td>
-								<a class="btn btn-sm btn-primary" href="">View</a>
+								<a class="btn btn-sm btn-primary" href="{{ route('student.show') }}">View</a>
 								<a class="btn btn-sm btn-warning" href="{{ route('student.edit') }}">Edit</a>
 								<a class="btn btn-sm btn-danger delete_btn" href="">Delete</a>
 							</td>

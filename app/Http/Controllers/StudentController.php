@@ -12,13 +12,18 @@ class StudentController extends Controller
         return view ('student.index');
     }
     /**
-     * load all students**/
+     * create a bew student data**/
     public function create(){
         return view ('student.create');
     }
     /**
-     * load all students**/
+     * edit student data**/
     public function edit(){
         return view ('student.edit');
+    }
+    /**
+     * edit student data**/
+    public function show(){
+        return view ('student.show');
     }
 }
