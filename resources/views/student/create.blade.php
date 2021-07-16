@@ -15,7 +15,9 @@
 		<a class="btn btn-outline-primary mb-3" href="{{ route('student.index') }}">Back</a>
 			<div class="card">
 				<div class="card-body">
-					<form action="" method="POST" enctype="multipart/form-data">
+					<h2>Add Student</h2>
+					<form action="{{ route('student.store') }}" method="POST" enctype="multipart/form-data" autocomplete="off">
+					@csrf
 						<div class="form-group">
 							<label for="">Teacher Name</label>
 							<input name="name" class="form-control" type="text">
@@ -33,47 +35,12 @@
 							<input name="username" class="form-control" type="text">
 						</div>
 						<div class="form-group mt-2">
-							<label for="">Location</label>
-							<select class="form-select" aria-label=".form-select-sm example" name="location" id="">
-								<option value="">-Location-</option>
-								<option value="Mirpur">Mirpur</option>
-								<option value="Banani">Banani</option>
-								<option value="Badda">Badda</option>
-								<option value="Uttara">Uttara</option>
-								<option value="Mohammadpur">Mohammadpur</option>
-								<option value="Bashundhara">Bashundhara</option>
-								<option value="Gulshan">Gulshan</option>
-							</select>
-						</div>
-						<div class="form-group mt-2">
-							<label for="">Age</label>
-							<input name="age" class="form-control" type="text">
-						</div>
-						<div class="form-group mt-2">
-							<label for="">Gender</label>
-							<input name="gender" type="radio" checked value="Male" id="Male"><label for="Male">Male</label>
-							<input name="gender" type="radio" value="Female" id="Female"><label for="Female">Female</label>
-						</div>
-						<div class="form-group mt-2">
-							<label for="">Department</label>
-							<select class="form-select" aria-label=".form-select-sm example" name="dept" id="">
-								<option value="">-Department-</option>
-								<option value="BBA">BBA</option>
-								<option value="EEE">EEE</option>
-								<option value="CSE">CSE</option>
-								<option value="Economics">Economics</option>
-								<option value="English">English</option>
-								<option value="Law">Law</option>
-								<option value="Architecture">Architecture</option>
-							</select>
-						</div>
-						<div class="form-group mt-2">
 							<label for="teacher_photo" <div style="cursor:pointer" data-toggle="tooltip" title="Profile Photo" class="pic"><i class="fas fa-images"></i> <img style="width: 100px;" id="preview" src="" alt=""></div>Teacher Photo</label>
 							<input name="photo"style="display:none;" class="form-control" type="file" id="teacher_photo">
 						</div>
 						<div class="form-group mt-2 mb-2 mx-auto">
 							<label for=""></label>
-							<input name="crud" class="btn btn-primary" type="submit" value="add teacher">
+							<input name="" class="btn btn-primary" type="submit" value="add student">
 						</div>
 					</form>
 				</div>
