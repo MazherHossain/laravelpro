@@ -19,6 +19,9 @@
 					@if(Session::has('success'))
 						<p  class="alert alert-success alert-dismissible fade show" role="alert">{{session::get('success')}}<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></p>
 					@endif
+					@if($errors -> any())
+					<p  class="alert alert-danger alert-dismissible fade show" role="alert">{{ $errors -> first() }}<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></p>
+					@endif
 					<form action="{{ route('student.store') }}" method="POST" enctype="multipart/form-data" autocomplete="off">
 					@csrf
 						<div class="form-group">

@@ -24,6 +24,14 @@ class StudentController extends Controller
     /**
      * storing student data**/
     public function store(Request $request){
+        $this -> validate($request,[
+            'name'=> ['required'],
+            'email'=> ['required','unique:students', 'email'],
+            'cell'=> ['required','numeric', 'starts_with:01,+8801'],
+            'uname'=> ['min:5','max:15']
+        ],[
+            'name.required'=> "Name can not have numeric value.",
+        ]); 
         $unique_name='';
         if($request-> hasFile('photo')){
             $img= $request -> file('photo');
@@ -42,17 +50,36 @@ class StudentController extends Controller
     }
     /**
      * edit student data**/
-    public function edit(){
-        return view ('student.edit');
+    public function edit($id){
+        $data=Student::find($id);
+        return view ('student.edit',[
+            'edit_data'=> $data
+        ]);
+    }
+    /**
+     * update student data**/
+    public function update(Request $request,$id){
+        $update_data=Student::find($id);
+        $update_data -> name = $request -> name;
+        $update_data -> email = $request -> email;
+        $update_data -> cell = $request -> cell;
+        $update_data -> uname = $request -> uname;
+        $update_data -> update();
+        return back()-> with('success','Student data edited!');
     }
     /**
      * edit student data**/
-    public function show(){
-        return view ('student.show');
+    public function show($id){
+        $data=Student::find($id);
+        return view ('student.show',[
+            'user_data' => $data
+        ]);
     }
     /**
      * delete student data**/
-    public function destroy(){
-        return view ('student.show');
+    public function destroy($id){
+        $delete_data= Student::find($id);
+        $delete_data->delete();
+        return back()-> with('success','Student data deleted!');
     }
 }

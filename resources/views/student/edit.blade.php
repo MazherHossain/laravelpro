@@ -18,52 +18,36 @@
     <a class="btn btn-primary btn-sm mb-2" href="{{ route('student.index') }}">Back</a>
       <div class="card">
         <div class="card-body">
-        <h2>Teacher Data Edit</h2>
-        <?php
-        if(isset($msg)){
-          echo $msg;
-        }
-        ?>
+        <h2>Edit Data {{ $edit_data -> name }}</h2>
+				@if(Session::has('success'))
+						<p  class="alert alert-success alert-dismissible fade show" role="alert">{{session::get('success')}}<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></p>
+					@endif
         <hr>
-        <form action="" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('student.update', $edit_data -> id) }}" method="POST" enctype="multipart/form-data">
+					@csrf
 						<div class="form-group">
-							<label for="">Teacher Name</label>
-							<input name="name" class="form-control" value="" type="text">
+							<label for="">Student Name</label>
+							<input name="name" class="form-control" value="{{ $edit_data -> name }}" type="text">
 						</div>
 						<div class="form-group mt-2">
 							<label for="">Email</label>
-							<input name="email" class="form-control" value="" type="text">
+							<input name="email" class="form-control" value="{{ $edit_data -> email }}" type="text">
 						</div>
 						<div class="form-group mt-2">
 							<label for="">Phone Number</label>
-							<input name="cell" class="form-control" value="" type="text">
+							<input name="cell" class="form-control" value="{{ $edit_data -> cell }}" type="text">
 						</div>
 						<div class="form-group mt-2">
 							<label for="">User Name</label>
-							<input name="username" class="form-control" value="" type="text">
+							<input name="uname" class="form-control" value="{{ $edit_data -> uname }}" type="text">
 						</div>
-						<div class="form-group mt-2">
-							<label for="">Location</label>
-							<select class="form-select" aria-label=".form-select-sm example" name="location" id="">
-								<option value="">-select-</op>
-								
-							</select>
-						</div>
-						<div class="form-group mt-2">
-							<label for="">Age</label>
-							<input name="age" class="form-control" value="" type="text">
-						</div>
-						<div class="form-group mt-2">
-							<label for="">Gender</label>
-							<label for="Male">Male</label>
-							<label for="Female">Female</label>
-						</div>
+						
 						
 	
 						<div class="form-group mt-2">
-							<label for="teacher_photo_edit" <div style="cursor:pointer" data-toggle="tooltip" title="Profile Photo" class="pic"><i class="fas fa-images"></i> <img style="width: 100px;" id="new_preview" src="photos/</div>Teacher Photo</label>
+							<label for="teacher_photo_edit" <div style="cursor:pointer" data-toggle="tooltip" title="Profile Photo" class="pic"><i class="fas fa-images"></i> <img style="width: 100px;" id="new_preview" src="src="{{ URL::to('/') }}/media/students/{{ $edit_data->photo }}"</div>Teacher Photo</label>
 							<input name="new_photo"style="display:none;" class="form-control" type="file" id="teacher_photo_edit">
-              <input type="hidden" value="" name="old_photo">
+              <input type="hidden" value="{{ URL::to('/') }}/media/students/{{ $edit_data->photo }}" name="old_photo">
 						</div>
 						<div class="form-group mt-2 mb-2 mx-auto">
 							<label for=""></label>

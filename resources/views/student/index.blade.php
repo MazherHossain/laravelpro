@@ -24,6 +24,9 @@
 					<button name="searchbtn" class="btn btn-outline-primary" type="submit">Search</button>
 				</form>
 			</div>
+			@if(Session::has('success'))
+						<p  class="alert alert-success alert-dismissible fade show" role="alert">{{session::get('success')}}<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></p>
+					@endif
 				<table class="table table-success table-striped text-success">
 					<thead>
 						<tr>
@@ -46,9 +49,9 @@
 							<td>{{ $data -> uname }}</td>
 							<td><img width="80" src="{{ URL::to('') }}/media/students/{{$data -> photo}}" alt=""></td> <!--can write {{url('')}} instead of {{ URL::to('') }} as well -->
 							<td>
-								<a class="btn btn-sm btn-primary" href="{{ route('student.show') }}">View</a>
-								<a class="btn btn-sm btn-warning" href="{{ route('student.edit') }}">Edit</a>
-								<a class="btn btn-sm btn-danger delete_btn" href="">Delete</a>
+								<a class="btn btn-sm btn-primary" href="{{ route('student.show',$data ->id) }}">View</a>
+								<a class="btn btn-sm btn-warning" href="{{ route('student.edit', $data ->id) }}">Edit</a>
+								<a class="btn btn-sm btn-danger delete_btn" href="{{ route('student.destroy', $data -> id) }}">Delete</a>
 							</td>
 						</tr>
 					@endforeach
